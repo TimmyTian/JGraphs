@@ -466,13 +466,14 @@ public abstract class Graph<Data extends Comparable> implements JGraphs<Vertex, 
      * @param path The list of vertices
      */
     public static void printPath(PrintStream stream, ArrayList<Vertex> path){
+        final int bound = path.size() - 1;
         if (path != null && path.size() > 1){
             stream.print("|{");
-            for (int i = 0; i < path.size() - 1; i++){
+            for (int i = 0; i < bound; i++){
                 stream.print(path.get(i) + ", ");
             }
-            stream.print(path.get(path.size() - 1));
-            stream.print("}| = " + path.get(path.size() - 1).dijkstra().getDistance());
+            stream.print(path.get(bound));
+            stream.print("}| = " + path.get(bound).dijkstra().getDistance());
             stream.println();
         }else{
             stream.println("No Path Found");
