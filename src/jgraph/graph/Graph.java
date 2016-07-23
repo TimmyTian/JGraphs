@@ -563,25 +563,25 @@ public abstract class Graph<Data extends Comparable> implements JGraphs<Vertex, 
         
         if (!nextCommand.equalsIgnoreCase("weighted") &&
                 !nextCommand.equalsIgnoreCase("unweighted")){
-            throw new RuntimeException("Invalid graph modifier: " + nextCommand);
+            throw new IllegalArgumentException("Invalid graph modifier: " + nextCommand);
         }
         
         nextCommand = commands.pop();
         if (!nextCommand.equalsIgnoreCase("directed") &&
                 !nextCommand.equalsIgnoreCase("undirected")){
-            throw new RuntimeException("Invalid graph modifier: " + nextCommand);
+            throw new IllegalArgumentException("Invalid graph modifier: " + nextCommand);
         }
         
         nextCommand = commands.pop();
         
         if (!nextCommand.equalsIgnoreCase("begin")){
-            throw new RuntimeException("Expected 'begin', found: " + nextCommand);
+            throw new IllegalArgumentException("Expected 'begin', found: " + nextCommand);
         }
         nextCommand = commands.pop();
         while(!nextCommand.equalsIgnoreCase("end")){
             
             if (commands.isEmpty()){
-                throw new RuntimeException("End of stack, 'end' not found");
+                throw new IllegalArgumentException("End of stack, 'end' not found");
             }
             nextCommand = commands.pop();
         }
