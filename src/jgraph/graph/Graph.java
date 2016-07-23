@@ -496,23 +496,23 @@ public abstract class Graph<Data extends Comparable> implements JGraphs<Vertex, 
         try {
             reader = new BufferedReader(new FileReader(file));
             char cur;
-            String word = "";
+            String command = "";
             while ((line = reader.readLine()) != null) {
                 
                 for (int c = 0; c < line.length(); c++){
                     cur = line.charAt(c);
                     
                     if (cur == ' ') {
-                        if (!word.isEmpty()) {
-                            commands.push(word);
-                            word = "";
+                        if (!command.isEmpty()) {
+                            commands.push(command);
+                            command = "";
                         }
                         continue;
                     }
                     if (cur == '*') {
-                        if (!word.isEmpty()) {
-                            commands.push(word);
-                            word = "";
+                        if (!command.isEmpty()) {
+                            commands.push(command);
+                            command = "";
                         }else{
                         
                             if ((c + 1) < line.length()){
@@ -523,11 +523,11 @@ public abstract class Graph<Data extends Comparable> implements JGraphs<Vertex, 
                         }
                         break;
                     }
-                    word += cur;
+                    command += cur;
                 }
-                if (!word.isEmpty()) {
-                    commands.push(word);
-                    word = "";
+                if (!command.isEmpty()) {
+                    commands.push(command);
+                    command = "";
                 }
             }
         } catch (FileNotFoundException e) {
