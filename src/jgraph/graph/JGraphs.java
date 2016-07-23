@@ -49,7 +49,7 @@ public interface JGraphs<VertexObject, EdgeObject, Data> {
      * @return True if a circuit exists.
      */
     public boolean hasCircuit(Data vert);
-    
+     
     /**
      * Finds the shortest paths from vertex A. This will preprocess the graph
      * and setup every vertex to have the shortest distance from vertex A.
