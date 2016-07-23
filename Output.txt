@@ -1,0 +1,33 @@
+Weighted
+Undigraph
+Fort_Collins -> Denver-50.0 Boulder-35.0
+Denver -> Fort_Collins-50.0 Boulder-15.0 Pueblo-80.0 Colorado_Springs-55.0
+Colorado_Springs -> Denver-55.0 Pueblo-25.0
+Pueblo -> Denver-80.0 Colorado_Springs-25.0
+Boulder -> Fort_Collins-35.0 Denver-15.0
+
+isConnected
+? = true
+
+addVertex Vail
+true -> PASS
+addEdge Vail Denver
+true -> PASS
+
+shortestDist Denver -> NULL
+shortestPaths Vail -> DONE
+
+shortestDist Pueblo = 155.0
+
+shortestDist Fort_Collins = 125.0
+
+
+Weighted
+Undigraph
+Fort_Collins -> Denver-50.0 Boulder-35.0
+Denver -> Fort_Collins-50.0 Boulder-15.0 Pueblo-80.0 Colorado_Springs-55.0 Vail-75.0
+Colorado_Springs -> Denver-55.0 Pueblo-25.0
+Pueblo -> Denver-80.0 Colorado_Springs-25.0
+Boulder -> Fort_Collins-35.0 Denver-15.0
+Vail -> Denver-75.0
+

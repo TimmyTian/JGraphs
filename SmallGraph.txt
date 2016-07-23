@@ -1,0 +1,33 @@
+*This will test your basic skills for reading 
+*Author: Richard DeSilvey
+
+unweighted
+directed
+
+begin
+**********Vertices**********
+A B C E F O U
+
+***********Edges1************
+*B A 1.2
+*B C 2.65
+*C A 5.48
+*A U 3.6
+*U O 4
+*O E 1.1
+*E F 8.6
+*E B 7.36
+*F A 7.12
+***********Edges2************
+B A
+B C
+C A
+A U
+U O
+O E
+E F
+E B
+F A
+
+end
+

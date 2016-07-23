@@ -1,0 +1,33 @@
+* This file contains a graph that will test the
+* Dijkstra's algorithm. The shortest path assumed
+* is A -> B -> D -> F, where A is the start and
+* F is the finish.
+*
+* Author: Richard DeSilvey
+
+weighted
+undirected
+
+begin
+
+A B C D E F G
+
+A B 4
+A C 3
+A E 7
+B D 5
+B C 6
+C E 8
+C D 11
+D E 2
+D G 10
+D F 2
+E G 5
+F G 3
+
+end
+
+** Test the graph
+isConnected true
+** Get the shortest path
+shortestPath A F

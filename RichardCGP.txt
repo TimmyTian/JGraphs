@@ -1,0 +1,36 @@
+* This graph is a simple graph representing common
+* cities in Colorado. 
+*
+* The data file also contain parameters (4.2) which
+* gives the population of the city in millions. Cities with no
+* parameter have unknown populations. 
+*
+* Author: Richard DeSilvey
+
+weighted undirected
+
+begin
+
+* Common Cities
+Fort_Collins(0.14) 
+Denver(0.6) Colorado_Springs(0.42) 
+Pueblo(0.12) Boulder Grand_Junction
+Durango Alamosa Vail
+
+* Connections
+Fort_Collins Denver 65 Fort_Collins Boulder 55
+Denver Boulder 30
+Denver Colorado_Springs 70
+Denver Vail 97
+Colorado_Springs Pueblo 44
+Vail Grand_Junction 147
+Grand_Junction Durango 167
+Durango Alamosa 149
+Alamosa Pueblo 130
+Alamosa Colorado_Springs 183
+Alamosa Vail 178
+
+end
+
+permuteShortestPaths Denver
+
