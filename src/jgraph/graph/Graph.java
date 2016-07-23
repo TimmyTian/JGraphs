@@ -49,10 +49,7 @@ public abstract class Graph<Data extends Comparable> implements JGraphs<Vertex, 
      * Sets up this graph as an undirected, and unweighted graph.
      */
     public Graph(){
-        isDirected = false;
-        isWeighted = false;
-        numVertices = 0;
-        numEdges = 0;
+        this(false, false);
     }
     
     /**

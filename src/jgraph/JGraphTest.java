@@ -52,8 +52,8 @@ public class JGraphTest {
 //            return;
 //        }
         
-//        Graph.readGraph("RichardCGP.txt", graph2, System.out, interp);
-        Graph.readGraph("Richard3.txt", graph2, System.out);
+        Graph.readGraph("RichardCGP.txt", graph2, System.out, interp);
+//        Graph.readGraph("Richard3.txt", graph2, System.out);
 
     }
 }
