@@ -5,7 +5,7 @@ import java.util.Stack;
 
 /**
  * The ParamCollector is used to collect parameters from a String in the format
- * ("string","string" , "string" , ... ,)
+ * ("string","string" , "string" , ... , "string")
  * @author Richard DeSilvey
  */
 public class ParamCollector {
