@@ -2,6 +2,7 @@
 package jgraph;
 
 import java.util.Stack;
+import jgraph.AdjList.AdjacencyList;
 import jgraph.AdjList.City;
 import jgraph.AdjMatrix.AdjacencyMatrix;
 import jgraph.graph.Graph;
@@ -30,8 +31,10 @@ public class JGraphTest {
             for (int c = 0; c < str.length(); c++){
                 if (str.charAt(c) == '('){
                     city = new City(str.substring(0, c));
+                    
                     String strParams = str.substring(c, str.length());
                     Stack<String> params = ParamCollector.getParams(strParams);
+                    
                     float pop = Float.parseFloat(params.pop());
                     city.setPopulation(pop);
                 }
@@ -43,7 +46,7 @@ public class JGraphTest {
 //        AdjacencyList<City> graph2 = new AdjacencyList<>();
 //        AdjacencyList<String> graph2 = new AdjacencyList<>();
         
-        AdjacencyMatrix<City> graph2 = new AdjacencyMatrix<>();
+        Graph<City> graph = new AdjacencyList<>();
         
 //        PrintStream stream = null;
 //        try {
@@ -52,7 +55,7 @@ public class JGraphTest {
 //            return;
 //        }
         
-        Graph.readGraph("RichardCGP.txt", graph2, System.out, interp);
+        Graph.readGraph("RichardCGP.txt", graph, System.out, interp);
 //        Graph.readGraph("Richard3.txt", graph2, System.out);
 
     }

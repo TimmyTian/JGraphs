@@ -17,18 +17,30 @@ public class ParamCollector {
      */
     public static Stack<String> getParams(String str){
         Stack<String> params = new Stack();
+        StringBuilder paramBuilder = new StringBuilder();
         
-        String p = "";
-        
-        for (int i = 1; i < str.length(); i++){
-            if (str.charAt(i) == ',' || str.charAt(i) == ')' || str.charAt(i) == ' '){
-                if (p.length() > 0){
-                    params.push(p);
-                    p = "";
+        for (int i = 1;; i++){
+            
+            if (i >= str.length()){
+                throw new IllegalArgumentException("End of Param not Found ')'");
+            }
+            
+            if (str.charAt(i) == ',' || str.charAt(i) == ' '){
+                if (paramBuilder.length() > 0){
+                    params.push(paramBuilder.toString());
+                    paramBuilder.delete(0, paramBuilder.length());
+                }else{
+                    throw new IllegalArgumentException("No Param found");
                 }
                 continue;
+            }else if (str.charAt(i) == ')'){
+                if (paramBuilder.length() > 0){
+                    params.push(paramBuilder.toString());
+                    paramBuilder.delete(0, paramBuilder.length());
+                }
+                break;
             }
-            p += str.charAt(i);
+            paramBuilder.append(str.charAt(i));
         }
         return params;
     }

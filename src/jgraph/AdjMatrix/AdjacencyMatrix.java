@@ -374,10 +374,10 @@ public class AdjacencyMatrix<Data extends Comparable> extends Graph<Data> {
         }
         ArrayList<Node> visited = new ArrayList<>();
         int fromIndex = getNext(1);
-        int index = getNext(fromIndex + 1);
-        Node fromVert = (Node) matrix[0][fromIndex], toVert = (Node) matrix[0][index];
+        int toIndex = getNext(fromIndex + 1);
+        Node fromVert = (Node) matrix[0][fromIndex], toVert = (Node) matrix[0][toIndex];
 
-        for (int i = index; i < matrix[0].length; i++) {
+        for (int i = toIndex; i < matrix[0].length; i++) {
             if (hasEdge(fromVert, toVert)) {
                 continue;
             } else {
@@ -469,7 +469,7 @@ public class AdjacencyMatrix<Data extends Comparable> extends Graph<Data> {
     /**
      * Fetches a vertex in the range matrix[0][1...n]
      *
-     * @param v The character used to find a vertex
+     * @param v The data used to find a vertex
      * @return The node containing the vertex, null if nothing found
      */
     private Node getVertexNode(Data v) {
@@ -521,7 +521,9 @@ public class AdjacencyMatrix<Data extends Comparable> extends Graph<Data> {
     }
 
     /**
-     * Performs faster than hasEdge(Character, Character).
+     * Performs faster than hasEdge(Data, Data) because each Node has an index
+     * reference to their locations in the matrix. Searching a node based on
+     * the data takes longer because it's a sequential search algorithm.
      *
      * @param vertA
      * @param vertB

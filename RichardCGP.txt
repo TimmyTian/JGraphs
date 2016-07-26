@@ -32,5 +32,5 @@ Alamosa Vail 178
 
 end
 
-permuteShortestPaths Denver
+permuteShortestPaths Vail
 
