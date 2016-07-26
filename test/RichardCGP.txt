@@ -15,7 +15,7 @@ begin
 Fort_Collins(0.14) 
 Denver(0.6) Colorado_Springs(0.42) 
 Pueblo(0.12) Boulder Grand_Junction
-Durango Alamosa Vail
+Durango Alamosa Vail()
 
 * Connections
 Fort_Collins Denver 65 Fort_Collins Boulder 55

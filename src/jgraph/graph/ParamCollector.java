@@ -22,7 +22,7 @@ public class ParamCollector {
         for (int i = 1;; i++){
             
             if (i >= str.length()){
-                throw new IllegalArgumentException("End of Param not Found ')'");
+                throw new IllegalStateException("Empty Params or end of Param not found ')'");
             }
             
             if (str.charAt(i) == ',' || str.charAt(i) == ' '){
