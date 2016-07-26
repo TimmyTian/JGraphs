@@ -1,0 +1,27 @@
+
+* Tests to see how the AdjacencyList tests
+* to see if it is connected or not.
+* Author: Richard
+
+unweighted undirected
+
+begin
+
+A B C D
+
+A C
+C B
+C D
+B D
+
+end
+
+isConnected true
+
+deleteVertex C ?
+
+isConnected false
+
+addEdge A D ?
+
+isConnected true

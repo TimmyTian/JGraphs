@@ -34,3 +34,10 @@ end
 
 permuteShortestPaths Vail
 
+isConnected true
+
+deleteVertex Vail true
+
+isConnected true
+
+

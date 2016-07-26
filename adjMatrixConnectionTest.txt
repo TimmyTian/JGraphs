@@ -1,0 +1,29 @@
+Unweighted
+Undigraph
+A -> C
+B -> C D
+C -> A B D
+D -> C B
+
+isConnected
+true -> PASS
+
+deleteVertex C
+? = true
+
+isConnected
+false -> PASS
+
+addEdge A D
+? = true
+
+isConnected
+true -> FAIL
+
+
+Unweighted
+Undigraph
+A -> D
+B -> D
+D -> B A
+

@@ -77,5 +77,31 @@ public class GraphTest {
         Graph.readGraph("RichardCGP.txt", graph, output, cityString);
         output.close();
     }
+ 
+    @Test
+    public void connectedAdjListTest(){
+        Graph<City> graph = new AdjacencyList<>();
+        PrintStream output = null;
+        try {
+            output = new PrintStream(new File("adjListConnectionTest.txt"));
+        } catch (FileNotFoundException fileNotFoundException) {
+            fail();
+        }
+        Graph.readGraph("connected.txt", graph, output);
+        output.close();
+    }
+    
+    @Test
+    public void connectedAdjMatrixTest(){
+        Graph<City> graph = new AdjacencyMatrix<>();
+        PrintStream output = null;
+        try {
+            output = new PrintStream(new File("adjMatrixConnectionTest.txt"));
+        } catch (FileNotFoundException fileNotFoundException) {
+            fail();
+        }
+        Graph.readGraph("connected.txt", graph, output);
+        output.close();
+    }
     
 }
