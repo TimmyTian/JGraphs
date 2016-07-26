@@ -35,8 +35,11 @@ public class JGraphTest {
                     String strParams = str.substring(c, str.length());
                     Stack<String> params = ParamCollector.getParams(strParams);
                     
-                    float pop = Float.parseFloat(params.pop());
-                    city.setPopulation(pop);
+                    if (!params.isEmpty()){
+                        float pop = Float.parseFloat(params.pop());
+                        city.setPopulation(pop);
+                    }
+                    
                 }
             }
             
