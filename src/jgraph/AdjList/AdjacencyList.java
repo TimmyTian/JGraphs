@@ -220,10 +220,10 @@ public class AdjacencyList<Data extends Comparable> extends Graph<Data> {
         
         if (to != null){
             predStack.push(to.vertex);
-            Node pred = (Node)to.vertex.dijkstra().getPred();
+            Node pred = (Node)to.vertex.dijkstra().getPredecessor();
             while(pred != null){
                 predStack.push(pred.vertex);
-                pred = (Node) pred.vertex.dijkstra().getPred();
+                pred = (Node) pred.vertex.dijkstra().getPredecessor();
             }
         }
         

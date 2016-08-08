@@ -20,7 +20,7 @@ public class DijkstrasVertex {
         pred = null;
     }
 
-    public Object getPred(){
+    public Object getPredecessor(){
         return pred;
     }
     
