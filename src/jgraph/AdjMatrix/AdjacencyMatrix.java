@@ -89,6 +89,15 @@ public class AdjacencyMatrix<Data extends Comparable> extends Graph<Data> {
     }
 
     /**
+     * Creates a new matrix with a specified initial size with a default 
+     * expansion rate of 5.
+     * @param initSize The size of this matrix
+     */
+    public AdjacencyMatrix(int initSize){
+        this(DEFAULT_RATE, initSize);
+    }
+    
+    /**
      * Creates a new matrix with a specified expansion rate. The expansion rate
      * is the rate at which the matrix grows at when a size limit is reached.
      * The matrix will not retract in size.
@@ -284,12 +293,14 @@ public class AdjacencyMatrix<Data extends Comparable> extends Graph<Data> {
     @Override
     public boolean addVertex(Vertex nvert) {
         int nIndex = -1;
+        Node node;
         for (int i = 1; i < matrix[0].length; i++) {
-            if (matrix[0][i] == null) {
+            node = (Node) matrix[0][i];
+            if (node == null) {
                 nIndex = i;
                 break;
             } else {
-                Data r1 = ((Node) matrix[0][i]).vertex.getData();
+                Data r1 = node.vertex.getData();
                 Data r2 = (Data) nvert.getData();
                 if (r1.compareTo(r2) == 0) {
                     return false;
@@ -300,7 +311,7 @@ public class AdjacencyMatrix<Data extends Comparable> extends Graph<Data> {
             expand(expansionRate);
             nIndex = matrix[0].length - expansionRate;
         }
-        Node node = new Node(nvert, nIndex);
+        node = new Node(nvert, nIndex);
         matrix[0][nIndex] = node;
         matrix[nIndex][0] = node;
         numVertices++;
