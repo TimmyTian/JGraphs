@@ -422,22 +422,49 @@ public class AdjacencyMatrix<Data extends Comparable> extends Graph<Data> {
 
         graph.append(isWeighted ? "Weighted\n" : "Unweighted\n");
         graph.append(isDirected ? "Digraph\n" : "Undigraph\n");
-
-        for (int j = 0; j < matrix.length; j++) {
-            for (int i = 0; i < matrix[j].length; i++) {
-                if (isWeighted) {
-                    graph.append(matrix[j][i] == null ? "   "
-                            : matrix[j][i].toString().charAt(0) + ""
-                            + (matrix[j][i].toString().charAt(1) != '.' ? matrix[j][i].toString().charAt(1) : ' ')
-                            + "" + (matrix[j][i].toString().charAt(2) != '.' ? matrix[j][i].toString().charAt(2) : ' '));
-                } else {
-                    graph.append(matrix[j][i] == null ? "   "
-                            : matrix[j][i].toString().charAt(0) + "  ");
+        Node node;
+        String nodeStr;
+        
+        for (Object[] outer : matrix){
+            for (Object inner : outer){
+                node = (Node) inner;
+                
+                if (node == null){
+                    graph.append("   ");
+                }else{
+                    nodeStr = node.toString();
+                    if (isWeighted) {
+                        graph.append(node == null ? "   "
+                                : nodeStr.charAt(0) + ""
+                                + (nodeStr.charAt(1) != '.' ? nodeStr.charAt(1) : ' ')
+                                + "" + (nodeStr.charAt(2) != '.' ? nodeStr.charAt(2) : ' '));
+                    } else {
+                        graph.append(node == null ? "   "
+                                : nodeStr.charAt(0) + "  ");
+                    }
                 }
             }
             graph.append("\n");
         }
         stream.println(graph.toString());
+        
+//        for (int j = 0; j < matrix.length; j++) {
+//            for (int i = 0; i < matrix[j].length; i++) {
+//                node = (Node) matrix[j][i];
+//                nodeStr = node.toString();
+//                if (isWeighted) {
+//                    graph.append(node == null ? "   "
+//                            : nodeStr.charAt(0) + ""
+//                            + (nodeStr.charAt(1) != '.' ? nodeStr.charAt(1) : ' ')
+//                            + "" + (nodeStr.charAt(2) != '.' ? nodeStr.charAt(2) : ' '));
+//                } else {
+//                    graph.append(node == null ? "   "
+//                            : nodeStr.charAt(0) + "  ");
+//                }
+//            }
+//            graph.append("\n");
+//        }
+//        stream.println(graph.toString());
     }
 
     private int getNext(int startFrom) {
