@@ -114,10 +114,8 @@ public class AdjacencyMatrix<Data extends Comparable> extends Graph<Data> {
 
         if (vertA != null && vertB != null) {
             int indexA = vertA.index, indexB = vertB.index;
-            if ((Node) matrix[indexA][indexB] == null) {
-                return null;
-            }
-            return ((Node) matrix[indexA][indexB]).edge;
+            Node node = (Node) matrix[indexA][indexB];
+            return (node == null) ? null : node.edge;
         }
         return null;
     }
