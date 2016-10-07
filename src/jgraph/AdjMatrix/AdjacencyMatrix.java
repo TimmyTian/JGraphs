@@ -349,6 +349,11 @@ public class AdjacencyMatrix<Data extends Comparable> extends Graph<Data> {
         return false;
     }
 
+    private float maxEdges(){
+        float denom = numVertices * (numVertices - 1);
+        return (isDirected ? denom : denom / 2f);
+    }
+    
     @Override
     public boolean isSparse() {
 
@@ -356,10 +361,7 @@ public class AdjacencyMatrix<Data extends Comparable> extends Graph<Data> {
             return false;
         }
 
-        float denom = numVertices * (numVertices - 1);
-        float maxEdges = (isDirected ? denom : denom / 2f);
-
-        return (numEdges / maxEdges) <= 0.15f;
+        return (numEdges / maxEdges()) <= 0.15f;
     }
 
     @Override
@@ -369,10 +371,7 @@ public class AdjacencyMatrix<Data extends Comparable> extends Graph<Data> {
             return true;
         }
 
-        float denom = numVertices * (numVertices - 1);
-        float maxEdges = (isDirected ? denom : denom / 2f);
-
-        return (numEdges / maxEdges) >= 0.85f;
+        return (numEdges / maxEdges()) >= 0.85f;
     }
 
     @Override
@@ -410,10 +409,7 @@ public class AdjacencyMatrix<Data extends Comparable> extends Graph<Data> {
             return false;
         }
 
-        float denom = numVertices * (numVertices - 1);
-        float maxEdges = (isDirected ? denom : denom / 2f);
-
-        return (numEdges == maxEdges);
+        return (numEdges == maxEdges());
     }
 
     @Override
@@ -428,7 +424,6 @@ public class AdjacencyMatrix<Data extends Comparable> extends Graph<Data> {
         for (Object[] outer : matrix){
             for (Object inner : outer){
                 node = (Node) inner;
-                
                 if (node == null){
                     graph.append("   ");
                 }else{
@@ -447,24 +442,6 @@ public class AdjacencyMatrix<Data extends Comparable> extends Graph<Data> {
             graph.append("\n");
         }
         stream.println(graph.toString());
-        
-//        for (int j = 0; j < matrix.length; j++) {
-//            for (int i = 0; i < matrix[j].length; i++) {
-//                node = (Node) matrix[j][i];
-//                nodeStr = node.toString();
-//                if (isWeighted) {
-//                    graph.append(node == null ? "   "
-//                            : nodeStr.charAt(0) + ""
-//                            + (nodeStr.charAt(1) != '.' ? nodeStr.charAt(1) : ' ')
-//                            + "" + (nodeStr.charAt(2) != '.' ? nodeStr.charAt(2) : ' '));
-//                } else {
-//                    graph.append(node == null ? "   "
-//                            : nodeStr.charAt(0) + "  ");
-//                }
-//            }
-//            graph.append("\n");
-//        }
-//        stream.println(graph.toString());
     }
 
     private int getNext(int startFrom) {
