@@ -451,26 +451,25 @@ public class AdjacencyList<Data extends Comparable> extends Graph<Data> {
         return false;
     }
 
+    private float maxEdges(){
+        float denom = numVertices * (numVertices - 1);
+        return (isDirected ? denom : denom / 2f);
+    }
+    
     @Override
     public boolean isSparse() {
         
         if (numVertices == 1) return false;
-        
-        float denom = numVertices * (numVertices - 1);
-        float maxEdges = (isDirected ? denom : denom / 2f);
 
-        return (numEdges / maxEdges) <= SPARSE_RATIO;
+        return (numEdges / maxEdges()) <= SPARSE_RATIO;
     }
 
     @Override
     public boolean isDense() {
         
         if (numVertices == 1) return true;
-        
-        float denom = numVertices * (numVertices - 1);
-        float maxEdges = (isDirected ? denom : denom / 2f);
 
-        return (numEdges / maxEdges) >= DENSE_RATIO;
+        return (numEdges / maxEdges()) >= DENSE_RATIO;
     }
 
     @Override
@@ -494,10 +493,8 @@ public class AdjacencyList<Data extends Comparable> extends Graph<Data> {
         if (numVertices == 0) {
             return false;
         }
-        float denom = numVertices * (numVertices - 1);
-        float maxEdges = (isDirected ? denom : denom / 2f);
 
-        return (numEdges == maxEdges);
+        return (numEdges == maxEdges());
     }
 
     @Override
